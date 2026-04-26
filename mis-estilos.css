@@ -1,0 +1,83 @@
+:root {
+    --fondo-oscuro: #1a1a1a;
+    --borde-tarjeta: #333;
+    --blur-efecto: blur(6px) grayscale(80%);
+}
+
+body {
+    background-color: var(--fondo-oscuro);
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 40px;
+}
+
+@keyframes miEntrada {
+    0% { 
+        opacity: 0; 
+        transform: scale(0.5); 
+    }
+    50% { 
+        opacity: 0.8; 
+        transform: scale(1.1);
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1); 
+    }
+}
+
+.mi-titulo {
+    text-align: center;
+    animation-name: miEntrada;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    margin-bottom: 50px;
+}
+
+.contenedor-galeria {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.caja-foto {
+    position: relative;
+    width: 200px;
+    margin: 0;
+    border: 2px solid var(--borde-tarjeta);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.caja-foto img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+.contenedor-galeria:hover .caja-foto:not(:hover) {
+    filter: var(--blur-efecto);
+    transform: scale(0.9);
+    opacity: 0.5;
+}
+
+.caja-foto:hover {
+    transform: scale(1.1);
+    border-color: white;
+    z-index: 5;
+}
+
+figcaption {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+figcaption h3 { margin: 0; font-size: 14px; }
+figcaption p { margin: 0; font-size: 10px; color: yellow; }
